@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\davidh\\$Zoneify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\zone_item.xml",
+        "source": "C:\\Users\\davidh\\$Zoneify\\app\\src\\main\\res\\layout\\zone_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\davidh\\$Zoneify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_zone.xml",
+        "source": "C:\\Users\\davidh\\$Zoneify\\app\\src\\main\\res\\layout\\fragment_zone.xml"
+    },
+    {
+        "merged": "C:\\Users\\davidh\\$Zoneify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_zone_list.xml",
+        "source": "C:\\Users\\davidh\\$Zoneify\\app\\src\\main\\res\\layout\\fragment_zone_list.xml"
+    }
+]

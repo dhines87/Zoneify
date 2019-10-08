@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/saveZoneButton"
+            android:orderInCategory="100"
+            android:icon="@drawable/save_24"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/deleteZoneButton"
+            android:orderInCategory="100"
+            android:icon="@drawable/delete_24"
+            app:showAsAction="ifRoom"/>
+</menu>

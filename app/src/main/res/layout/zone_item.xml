@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.david.zoneify.data.Direction"/>
+        <import type="com.example.david.zoneify.util.Converter"/>
+
+        <variable name="zone" type="com.example.david.zoneify.data.Zone"/>
+        <variable name="zoneListViewModel" type="com.example.david.zoneify.zoneListView.ZoneListViewModel"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/zone_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="2dp"
+            android:onClick="@{() -> zoneListViewModel.openZone(zone.id)}">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+            <ImageView
+                    android:id="@+id/zoneDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_centerVertical="true"
+                    android:src="@{zone.direction == Direction.ENTERING ? @drawable/zone_entering_48 : @drawable/zone_leaving_48}"
+                    />
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_toEndOf="@+id/zoneDirection"
+                    android:gravity="center_vertical">
+
+                <TextView
+                        android:id="@+id/zoneName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/textColor"
+                        android:text="@{zone.name}"/>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/location_24"/>
+
+                    <TextView
+                            android:id="@+id/zoneLatLng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:layout_gravity="bottom"
+                            android:textColor="@color/textColor"
+                            android:text="@{Converter.latLngToString(zone.latLng)}"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true">
+
+                <ImageView
+                        android:id="@+id/zoneActiveImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@{zone.active ? @drawable/zone_on_card : @drawable/zone_off_card}"/>
+
+                <TextView
+                        android:id="@+id/zoneActiveText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="10dp"
+                        android:textColor="@color/textColor"
+                        android:text="@{zone.active ? @string/zone_active : @string/zone_inactive}"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

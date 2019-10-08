@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                            
+
+    
+                                                            
+                 
+                                    
+                                                                          
+           
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" android:tag="layout/fragment_zone_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/FormMargin"
+                    android:layout_marginStart="@dimen/FormMargin">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutZoneName"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/editZoneName"
+                        app:errorEnabled="true"
+                        android:gravity="center">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextZoneName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="binding_1"                   
+                                                                                            />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editLocationButton"
+                        app:icon="@drawable/location_24"
+                        app:iconGravity="textStart"
+                        android:text="@string/edit_location"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:theme="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textSize="@dimen/materialButtonTextSize"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutZoneLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:helperTextEnabled="true"
+                        app:errorEnabled="true"
+                        android:gravity="center">
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/zoneEditActiveImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="binding_2"                                     
+                            android:layout_gravity="center_horizontal"/>
+
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/activeSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_horizontal"
+                            android:tag="binding_3"                        
+                                                                                                      />
+
+                    <TextView
+                            android:id="@+id/activeSwitchText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="@color/colorAccent"
+                            android:tag="binding_4"                   
+                            android:layout_gravity="center_horizontal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/enteringButton"
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:textSize="9sp"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:text="@string/entering"
+                            app:icon="@drawable/zone_entering_48"
+                            app:iconPadding="8dp"
+                            android:tag="binding_5"                                   />
+
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/leavingButton"
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:textSize="9sp"
+                            android:text="@string/leaving"
+                            app:icon="@drawable/zone_leaving_48"
+                            app:iconPadding="8dp"
+                            android:tag="binding_6"                                   />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutZoneMessage"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/editZoneMessage"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:gravity="center"
+                        app:helperTextEnabled="true"
+                        app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextZoneMessage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:tag="binding_7"                      
+                                                                                               />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </FrameLayout>
+
+         
+
