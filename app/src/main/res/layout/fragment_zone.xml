@@ -87,7 +87,7 @@
                             android:layout_marginTop="4dp"
                             android:gravity="center_vertical"
                             android:layout_gravity="center_horizontal"
-                            android:checked="@={zoneViewModel.zone.active}"
+                            android:checked="@={zoneViewModel._active}"
                             android:onCheckedChanged="@{() -> zoneViewModel.activeOnCheckedChanged()}"/>
 
                     <TextView
@@ -120,7 +120,10 @@
                             android:layout_marginEnd="15dp"
                             android:text="@string/entering"
                             app:icon="@drawable/zone_entering_48"
+                            app:iconTint="@color/material_btn_state_text_colors"
                             app:iconPadding="8dp"
+                            android:backgroundTint="@color/material_btn_state_colors"
+                            android:textColor="@color/material_btn_state_text_colors"
                             android:onClick="@{() -> zoneViewModel.toggleDirection()}"/>
 
                     <com.google.android.material.button.MaterialButton
@@ -135,7 +138,10 @@
                             android:textSize="9sp"
                             android:text="@string/leaving"
                             app:icon="@drawable/zone_leaving_48"
+                            app:iconTint="@color/material_btn_state_text_colors"
                             app:iconPadding="8dp"
+                            android:backgroundTint="@color/material_btn_state_colors"
+                            android:textColor="@color/material_btn_state_text_colors"
                             android:onClick="@{() -> zoneViewModel.toggleDirection()}"/>
 
                 </LinearLayout>
@@ -164,8 +170,6 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-
 
     </FrameLayout>
 

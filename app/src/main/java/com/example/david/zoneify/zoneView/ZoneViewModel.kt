@@ -88,7 +88,8 @@ class ZoneViewModel(
     }
 
     fun activeOnCheckedChanged() {
-        this._active.value = this.zone.value?.active?.not() // Returns the inverse of this boolean
+        this.zone.value?.active?.not()
+        this._active.value = this.zone.value?.active
     }
 
     fun toggleDirection() {
@@ -106,13 +107,5 @@ class ZoneViewModel(
 
     fun validateMessage() {
         this.messageErrorText.value = if (this.zone.value?.message.isNullOrBlank()) "* Message is required." else ""
-    }
-
-    fun addGeofence() {
-
-    }
-
-    fun removeGeofence() {
-
     }
 }
