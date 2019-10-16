@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.david.zoneify.BuildConfig
-import com.example.david.zoneify.MainActivity
+import com.example.david.zoneify.activity.MainActivity
 import com.example.david.zoneify.R
 import com.example.david.zoneify.data.Zone
 

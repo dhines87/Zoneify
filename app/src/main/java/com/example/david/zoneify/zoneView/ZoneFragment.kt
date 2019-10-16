@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.david.zoneify.util.getViewModelFactory
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.david.zoneify.MainActivity
+import com.example.david.zoneify.activity.MainActivity
 import com.example.david.zoneify.R
 import com.example.david.zoneify.data.Direction
 import com.example.david.zoneify.data.Zone

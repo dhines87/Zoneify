@@ -28,6 +28,7 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
                 val instance = Room
                     .databaseBuilder(context.applicationContext, ZoneifyDatabase::class.java,"zoneifyDB")
                     .allowMainThreadQueries()
+                    .addCallback(ZoneifyDatabaseCallback())
                     .build()
                 INSTANCE = instance
                 return instance
@@ -41,7 +42,10 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 GlobalScope.launch (Dispatchers.IO){
-                    populateDatabase(database.zoneDao())
+                    val zones = database.zoneDao().getAllZones()
+                    if (zones.isEmpty()) {
+                        populateDatabase(database.zoneDao())
+                    }
                 }
             }
         }

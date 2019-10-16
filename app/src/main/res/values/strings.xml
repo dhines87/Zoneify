@@ -21,4 +21,28 @@
     <string name="location_permission_required">Location access is required for this app.</string>
     <string name="location_not_available">Location not available</string>
     <string name="splash_createdby">A PLAR project created by: David Hines</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding_one_title">Welcome to Zoneify!\nZone List - Add/Edit Zone</string>
+    <string name="onboarding_one_content">Zoneify is a location based notification app. When you
+        leave or enter a zone, Zoneify will send you a notification! \n\n
+
+        To get started add a zone by clicking on the
+        floating action button in the bottom right corner.\n\n
+        To edit a zone tap one of the listed zones.
+    </string>
+    <string name="onboarding_two_title">Add/Edit Zone</string>
+    <string name="onboarding_two_content">After clicking on the add zone button you need to set a Title and a Message for the notification.\n\n
+        By default the zone will be set to active and will trigger when you enter a zone. Toggle these settings to change them.\n\n
+        By default the zone will be set to your current location. Click on the Edit Location button to change the zone location and radius.\n\n
+        Once you have entered a Title and Message and are happy with the other settings click on the Save button in the app bar.\n\n
+        To delete the zone click on the Delete button in the app bar.\n\n
+        If you wish to just edit the zone, make your changes and click on the Save button.
+    </string>
+    <string name="onboarding_three_title">Edit Zone Location</string>
+    <string name="onboarding_three_content">After clicking on the Edit Location button you will see a map with a circle indicating where your zone is located.\n\n
+        To change the location simply tap the screen where you want the zone to be located.\n\n
+        Scroll the map by dragging your finger around the screen. Zoom in and out by pinching on the screen.\n\n
+        To change the radius of the zone click on the + or - buttons on the bottom of the screen. The minimum radius is 75m and the max is 250.\n\n
+        You can save or delete the zone from this screen as well.
+    </string>
 </resources>

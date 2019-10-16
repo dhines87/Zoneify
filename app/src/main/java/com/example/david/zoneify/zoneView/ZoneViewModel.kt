@@ -1,14 +1,11 @@
 package com.example.david.zoneify.zoneView
 
 import androidx.lifecycle.*
-import com.example.david.zoneify.MainActivity
 import com.example.david.zoneify.R
 import com.example.david.zoneify.data.Direction
 import com.example.david.zoneify.data.Zone
 import com.example.david.zoneify.data.ZoneRepository
 import com.example.david.zoneify.util.NavigationManager
-import com.google.android.gms.location.GeofencingClient
-import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.launch
 
 class ZoneViewModel(

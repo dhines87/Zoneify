@@ -1,6 +1,7 @@
-package com.example.david.zoneify
+package com.example.david.zoneify.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
@@ -13,7 +14,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.david.zoneify.BuildConfig
+import com.example.david.zoneify.R
 import com.example.david.zoneify.util.NavigationManager
+import com.example.david.zoneify.util.OnBoardingHelper
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
