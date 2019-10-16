@@ -50,7 +50,7 @@ class ZoneRepository internal constructor(
         return zoneDao.deleteZoneById(id)
     }
 
-    private fun addGeofence(zone: Zone) {
+    fun addGeofence(zone: Zone) {
         val geofence = buildGeofence(zone)
 
         if (geofence != null
@@ -63,7 +63,7 @@ class ZoneRepository internal constructor(
     private fun buildGeofence(zone: Zone): Geofence? {
         val transitionType = if (zone.direction == Direction.ENTERING) Geofence.GEOFENCE_TRANSITION_DWELL else Geofence.GEOFENCE_TRANSITION_EXIT
 
-        return Geofence.Builder()
+        val geofence = Geofence.Builder()
             .setRequestId(zone.id.toString())
             .setCircularRegion(
                 zone.latLng.latitude,
@@ -71,6 +71,12 @@ class ZoneRepository internal constructor(
                 zone.radius.toFloat())
             .setTransitionTypes(transitionType)
             .setExpirationDuration(Geofence.NEVER_EXPIRE)
+
+        if (transitionType == Geofence.GEOFENCE_TRANSITION_DWELL) {
+            geofence.setLoiteringDelay(60000) // 1 minute
+        }
+
+        return geofence
             .build()
     }
 

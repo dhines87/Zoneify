@@ -1,5 +1,6 @@
 package com.example.david.zoneify.data
 
+import android.app.Activity
 import android.content.Context
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -28,7 +29,7 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
                 val instance = Room
                     .databaseBuilder(context.applicationContext, ZoneifyDatabase::class.java,"zoneifyDB")
                     .allowMainThreadQueries()
-                    .addCallback(ZoneifyDatabaseCallback())
+                    .addCallback(ZoneifyDatabaseCallback(context))
                     .build()
                 INSTANCE = instance
                 return instance
@@ -36,7 +37,7 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
         }
     }
 
-    private class ZoneifyDatabaseCallback : RoomDatabase.Callback() {
+    private class ZoneifyDatabaseCallback(private val context: Context) : RoomDatabase.Callback() {
 
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
@@ -44,13 +45,13 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
                 GlobalScope.launch (Dispatchers.IO){
                     val zones = database.zoneDao().getAllZones()
                     if (zones.isEmpty()) {
-                        populateDatabase(database.zoneDao())
+                        populateDatabase(context, database.zoneDao())
                     }
                 }
             }
         }
 
-        suspend fun populateDatabase(zoneDao: ZoneDao)  {
+        suspend fun populateDatabase(context: Context, zoneDao: ZoneDao)  {
             var zone = Zone(name = "Home",
                 latLng = LatLng(51.032039, -114.100033),
                 radius = 100,
@@ -70,6 +71,12 @@ abstract class ZoneifyDatabase internal constructor(): RoomDatabase() {
                 direction = Direction.LEAVING,
                 message = "Leaving the gym.")
             zoneDao.insertZone(zone)
+
+            val sharedPreferences = context.getSharedPreferences(context.packageName, Activity.MODE_PRIVATE)
+            sharedPreferences
+                .edit()
+                .putBoolean("DATABASE_POPULATED", true)
+                .apply()
         }
 
     }

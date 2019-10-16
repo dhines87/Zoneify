@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.david.zoneify.R
 import android.app.Activity
+import com.example.david.zoneify.activity.MainActivity
 import com.example.david.zoneify.data.Direction
 import com.example.david.zoneify.zoneListView.ZoneListFragment
 import com.example.david.zoneify.zoneView.ZoneFragment
@@ -25,9 +26,11 @@ class NavigationManager {
 
     private var mFragmentManager: FragmentManager? = null
     private var mNavigationListener: NavigationListener? = null
+    private var mMainActivity: MainActivity? = null
 
-    fun init(fragmentManager: FragmentManager) {
+    fun init(fragmentManager: FragmentManager, mainActivity: MainActivity) {
         mFragmentManager = fragmentManager
+        mMainActivity = mainActivity
 
         mFragmentManager!!.addOnBackStackChangedListener {
             mNavigationListener?.onBackstackChanged()
@@ -67,6 +70,13 @@ class NavigationManager {
             baseActivity.finish()
         } else {
             mFragmentManager?.popBackStackImmediate()
+            if (mFragmentManager?.backStackEntryCount == 1) {
+                // We are on the ZoneListFragment
+                mMainActivity?.setToolbar(true)
+            }
+            else {
+                mMainActivity?.setToolbar(false)
+            }
         }
     }
 
@@ -84,6 +94,10 @@ class NavigationManager {
                 if (fragment != null && fragment.isVisible)
                     return fragment
             }
+
+            if (fragments.size > 0) {
+                return fragments[0]
+            }
         }
 
         return null
@@ -91,10 +105,12 @@ class NavigationManager {
 
     fun startZoneListFragment() {
         openAsRoot(ZoneListFragment())
+        mMainActivity?.setToolbar(true)
     }
 
     fun startZoneFragment(id: Int) {
         open(ZoneFragment.newInstance(id))
+        mMainActivity?.setToolbar(false)
     }
 
     fun startZoneLocationFragment(id: Int,
@@ -107,5 +123,6 @@ class NavigationManager {
                                   direction: Direction
     ) {
         open(ZoneLocationFragment.newInstance(id, name, lat, long, radius, message, active, direction))
+        mMainActivity?.setToolbar(false)
     }
 }

@@ -60,7 +60,6 @@ class ZoneFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        (activity as MainActivity).setViewToolbar(FragmentViewEnum.ZONE_LIST)
     }
 
     override fun onAttach(context: Context) {
@@ -72,7 +71,7 @@ class ZoneFragment : Fragment() {
 
     private fun setTitle(zone: Zone?) {
         val title = if (zone?.name.isNullOrBlank()) "New - Zone" else "Edit - " + zone?.name
-        (activity as MainActivity).setViewToolbar(FragmentViewEnum.ZONE, title)
+        //(activity as MainActivity).setViewToolbar(FragmentViewEnum.ZONE, title)
     }
 
     @SuppressLint("MissingPermission")
@@ -96,6 +95,8 @@ class ZoneFragment : Fragment() {
                             Direction.ENTERING,
                             "",
                             true)
+
+                        enteringButton.isEnabled = true
 
                         this.zoneViewModel.setZone(zone)
                     }

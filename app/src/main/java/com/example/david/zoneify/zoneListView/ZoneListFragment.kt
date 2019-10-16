@@ -42,7 +42,6 @@ class ZoneListFragment : Fragment() {
             zoneListAdapter = ZoneListAdapter(zoneListViewModel)
 
             zoneListRecyclerView.layoutManager = LinearLayoutManager(context)
-            zoneListRecyclerView.setHasFixedSize(true)
             zoneListRecyclerView.isNestedScrollingEnabled = true
             zoneListRecyclerView.adapter = zoneListAdapter
         }

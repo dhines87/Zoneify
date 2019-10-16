@@ -18,6 +18,7 @@ import com.example.david.zoneify.BuildConfig
 import com.example.david.zoneify.R
 import com.example.david.zoneify.util.NavigationManager
 import com.example.david.zoneify.util.OnBoardingHelper
+import com.example.david.zoneify.zoneListView.ZoneListFragment
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
@@ -29,20 +30,26 @@ class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsRes
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
         navigationManager = NavigationManager.newInstance()
-        navigationManager.init(supportFragmentManager)
-
-        setSupportActionBar(toolbar)
-        collapsingToolbar.title = getString(R.string.app_name)
+        navigationManager.init(supportFragmentManager, this)
 
         addZoneFab.setOnClickListener {
             navigationManager.startZoneFragment(-1)
         }
 
         if (savedInstanceState == null) {
+
+
             checkPermission()
         }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val fragment = navigationManager.getVisibleFragment()
+        setToolbar(fragment is ZoneListFragment)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -82,11 +89,11 @@ class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsRes
         }
     }
 
-    fun setViewToolbar(fragmentView: FragmentViewEnum, title: String? = null) {
-        collapsingToolbar.title = if (fragmentView == FragmentViewEnum.ZONE) title else getString(R.string.app_name)
-        appBarLayout.setExpanded(fragmentView == FragmentViewEnum.ZONE_LIST)
-        if (fragmentView == FragmentViewEnum.ZONE) addZoneFab.hide() else addZoneFab.show()
-        hideMenuItems = fragmentView == FragmentViewEnum.ZONE_LIST
+    fun setToolbar(isZoneList: Boolean) {
+        collapsingToolbar.title = if (!isZoneList) "Edit Zone" else getString(R.string.app_name)
+        appBarLayout.setExpanded(isZoneList)
+        if (!isZoneList) addZoneFab.hide() else addZoneFab.show()
+        hideMenuItems = isZoneList
         invalidateOptionsMenu()
     }
 
@@ -133,7 +140,6 @@ class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsRes
 
                     if (fragment is ZoneLocationFragment) {
                         fragment.deleteZone()
-                        setViewToolbar(FragmentViewEnum.ZONE_LIST)
                     }
 
                     Snackbar.make(coordinatorLayout, "Zone Deleted!", Snackbar.LENGTH_LONG).show()
