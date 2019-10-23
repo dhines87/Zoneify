@@ -1,4 +1,4 @@
-# ![](https://github.com/dhines87/Zoneify/blob/master/app/src/main/res/drawable/readme_logo.svg) Zoneify
+# ![](https://github.com/dhines87/Zoneify/svg/readme_logo.svg) Zoneify
 
 A location based Android application written in kotlin that uses geofences to send notifications when entering or leaving a created zone.
 
